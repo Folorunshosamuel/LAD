@@ -1,27 +1,3 @@
-<?php
-// Include database connection and lad.css stylesheet
-include 'db_connect.php';
-echo '<link rel="stylesheet" href="lad.css">';
-
-// Retrieve data for summary cards
-$totalMembers = $db->query("SELECT COUNT(*) FROM legislators")->fetchColumn();
-$totalSenate = $db->query("SELECT COUNT(*) FROM senateMembers")->fetchColumn();
-$totalReps = $db->query("SELECT COUNT(*) FROM horMembers")->fetchColumn();
-$totalFemale = $db->query("SELECT COUNT(*) FROM legislators WHERE gender = ' Female'")->fetchColumn();
-$femalePercentage = ($totalMembers > 0) ? round(($totalFemale / $totalMembers) * 100, 2) : 0;
-$totalMale = $db->query("SELECT COUNT(*) FROM legislators WHERE gender = 'Male'")->fetchColumn();
-$malePercentage = ($totalMembers > 0) ? round(($totalMale / $totalMembers) * 100, 2) : 0;
-$totalYoungMembers = $db->query("SELECT COUNT(*) FROM horMembers WHERE TIMESTAMPDIFF(YEAR, dob, CURDATE()) < 40")->fetchColumn();
-$youngPercentage = ($totalMembers > 0) ? round(($totalYoungMembers / $totalMembers) * 100, 2) : 0;
-
-
-// Retrieve recent bills for the activity card
-$recentBills = $db->query("SELECT id, billNum, title, firstReading FROM Bills ORDER BY firstReading DESC LIMIT 5")->fetchAll();
-
-// Retrieve all members for the members table
-$members = $db->query("SELECT id, name, gender, dob, state, constituency, position FROM horMembers")->fetchAll();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,14 +17,15 @@ $members = $db->query("SELECT id, name, gender, dob, state, constituency, positi
     </style>
 </head>
 <body>
-    <?php
-    include 'header.php'; // Include the header at the beginning of the dashboard
-    ?>
-    <?php
-    include 'boilerplate.php'; // Include the boilerplate after the header
-    ?>
-
     <main>
+    <div class="az-content-header">
+        <div class="az-column-landing">
+            <div>
+                <h1 class="az-header-title" style="font-size: 3rem">Legislative Analysis Dashboard</h1>
+                <a href="#" class="btn btn-outline-indigo">Learn More</a>
+            </div>
+        </div>
+    </div><!-- az-content-header -->    
     <div class="container">
             <section class="py-5 mb-5">
                 <div class="row">

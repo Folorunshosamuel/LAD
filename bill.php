@@ -1,6 +1,7 @@
 <?php
-// Database connection
+/* // Database connection
 include 'db_connect.php'; // Make sure this path matches your connection file
+include 'header.php';
 
 // Get the bill ID from the URL
 $billId = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -16,8 +17,72 @@ $query = $db->prepare("SELECT Bills.*, legislators.name AS sponsor_name FROM Bil
 $query->execute([$billId]);
 $bill = $query->fetch();
 
+logActivity($db, $_SESSION['id'], 'Viewed Bill with ID: ' . $billId);
+
+
 if (!$bill) {
     die("Bill not found.");
+}
+ */
+
+// Database connection
+include 'db_connect.php'; // Make sure this path matches your connection file
+include 'header.php';
+
+// Start the session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Get the bill ID from the URL
+$billId = isset($_GET['id']) ? intval($_GET['id']) : null;
+
+if ($billId === null) {
+    die("Bill ID is not defined in the URL.");
+}
+
+// Fetch the bill’s data
+$query = $db->prepare("SELECT Bills.*, legislators.name AS sponsor_name, committees.name AS committee_name 
+                       FROM Bills
+                       LEFT JOIN legislators ON Bills.sponsor_id = legislators.id
+                       LEFT JOIN committees ON Bills.committeeReferred = committees.id
+                       WHERE Bills.id = ?");
+$query->execute([$billId]);
+$bill = $query->fetch();
+
+if (!$bill) {
+    die("Bill not found.");
+}
+
+// Ensure the bill view is logged only once per session
+if (!isset($_SESSION['viewed_bills'])) {
+    $_SESSION['viewed_bills'] = []; // Initialize if not set
+}
+
+if (!in_array($billId, $_SESSION['viewed_bills'])) {
+    logActivity($db, $_SESSION['id'], 'Viewed Bill with ID: ' . $billId);
+    $_SESSION['viewed_bills'][] = $billId; // Mark this bill as viewed
+}
+
+// Handle the Track Bill action
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['track_bill'])) {
+    $userId = $_SESSION['id']; // Assuming the user's ID is stored in the session
+
+    // Check if the bill is already tracked
+    $checkQuery = $db->prepare("SELECT * FROM tracked_bills WHERE user_id = ? AND bill_id = ?");
+    $checkQuery->execute([$userId, $billId]);
+
+    if ($checkQuery->rowCount() === 0) {
+        // Add the bill to the tracked list
+        $insertQuery = $db->prepare("INSERT INTO tracked_bills (user_id, bill_id) VALUES (?, ?)");
+        if ($insertQuery->execute([$userId, $billId])) {
+            echo "<p style='color: green;'>Bill successfully tracked!</p>";
+        } else {
+            echo "<p style='color: red;'>Error tracking the bill. Please try again later.</p>";
+        }
+    } else {
+        echo "<p style='color: orange;'>You are already tracking this bill.</p>";
+    }
 }
 ?>
 
@@ -71,12 +136,23 @@ if (!$bill) {
         .download-link:hover {
             background-color: #0056b3;
         }
+        .track-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .track-button:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
-    <?php
-    include 'header.php'; // Include the header at the beginning of the dashboard
-    ?>
     <div class="bill-container">
         <div class="bill-header">
             <h1><?= htmlspecialchars($bill['billNum']) ?> - <?= htmlspecialchars($bill['title']) ?></h1>
@@ -85,13 +161,11 @@ if (!$bill) {
         </div>
 
         <div class="bill-details">
-            <p><strong>First Reading:</strong> <?= htmlspecialchars($bill['firstReading'] ?? 'N/A') ?></p>
-            <p><strong>Second Reading:</strong> <?= htmlspecialchars($bill['secondReading'] ?? 'N/A') ?></p>
-            <p><strong>Third Reading:</strong> <?= htmlspecialchars($bill['thirdReading'] ?? 'N/A') ?></p>
-        </div>
-        <div class="bill-details">
-            <p><strong>Committee referred to:</strong> <?= htmlspecialchars($bill['committeeReferred'] ?? 'N/A' ) ?></p>
-            <p><strong>Consolidated with:</strong> <?= htmlspecialchars($bill['consolidatedWith'] ?? 'N/A' ) ?></p>
+            <p><strong>First Reading:</strong> <?= htmlspecialchars($bill['firstReading'] ?? 'Not reached') ?></p>
+            <p><strong>Second Reading:</strong> <?= htmlspecialchars($bill['secondReading'] ?? 'Not reached') ?></p>
+            <p><strong>Committee referred to:</strong> <?= htmlspecialchars($bill['committee_name'] ?? 'Not reached' ) ?></p>
+            <p><strong>Third Reading:</strong> <?= htmlspecialchars($bill['thirdReading'] ?? 'Not reached') ?></p>
+            <p><strong>Consolidated with:</strong> <?= htmlspecialchars($bill['consolidatedWith'] ?? 'Not reached' ) ?></p>
         </div>
 
         <div class="bill-section">
@@ -101,13 +175,20 @@ if (!$bill) {
 
         <div class="bill-section">
             <?php if ($bill['billFile']): ?>
-                <a href="<?= htmlspecialchars($bill['billFile']) ?>" class="download-link" download>Download Bill Document</a>
+                <a href="<?= htmlspecialchars($bill['billFile']) ?>" class="bttn" download>Download Bill Document</a>
             <?php else: ?>
                 <p>No bill document available for download.</p>
             <?php endif; ?>
 
             <!-- Edit Bill Button -->
-            <a href="edit-bill.php?id=<?= urlencode($billId) ?>" class="edit-link">Edit Bill</a>
+            <?php if ($user_role === 'admin'): ?>
+                <a href="edit-bill.php?id=<?= urlencode($billId) ?>" class="bttn">Edit Bill</a>
+            <?php endif; ?>
+
+            <!-- Track Bill Form -->
+            <form method="POST">
+                <button type="submit" name="track_bill" class="track-button">Track Bill</button>
+            </form>
         </div>
     </div>
 </body>

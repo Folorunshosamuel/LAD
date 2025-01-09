@@ -3668,14 +3668,14 @@ input[type="button"].btn-block {
 
 .badge {
   display: inline-block;
-  padding: 0.25em 0.4em;
-  font-size: 75%;
+  padding: 0.1em 0.3em;
+  font-size: 50%;
   font-weight: 700;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 3px;
+  border-radius: 50%;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   @media (prefers-reduced-motion: reduce) {
     .badge {
@@ -8882,7 +8882,7 @@ a.text-dark:hover, a.text-dark:focus {
   background-size:cover;
   height:90%;
   background-position: bottom;
-  padding: 3rem 10rem;
+  padding: 30px 80px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px; }
@@ -8896,15 +8896,11 @@ a.text-dark:hover, a.text-dark:focus {
     text-align: center; }
 
 .az-content-header-top {
-  display: flex;/* 
-  background: #fff;
-  padding: 1rem;
-  background-size: cover;
-  background-blend-mode: darken; */
-  align-items: center;
+  display: flex;
+  align-items: left;
   justify-content: space-between;
   margin-bottom: 20px;
-}
+  flex-direction: column-reverse;}
 .az-content-body {
   flex: 1; }
 
@@ -9543,7 +9539,12 @@ body {
       background-color: #dc3545;
       border-radius: 100%; }
 
-.az-header-notification {
+     .az-header-message .badge {
+       color: white;
+       background-color: red;
+       font-weight: bold;}
+    
+    .az-header-notification {
   margin-left: 15px; }
   .az-header-notification > a::after {
     content: '';
@@ -11716,11 +11717,12 @@ body {
 
       
 .az-column-landing {
-  padding: 10px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; }
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between; }
   @media (min-width: 576px) {
     .az-column-landing {
       padding-top: 50px;
@@ -37661,4 +37663,5 @@ body {
   padding: 20px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-} 
+}
+

@@ -8,8 +8,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     exit;
 }
 
-// Include database connection
+// Include database connection and utility functions
 include 'db_connect.php';
+include 'utils.php';
 
 // Initialize variables
 $email = $password = "";
@@ -18,7 +19,7 @@ $email_err = $password_err = $login_err = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Check if email is empty
     if (empty(trim($_POST["email"]))) {
-        $email_err = "Please enter email.";
+        $email_err = "Please enter your email.";
     } else {
         $email = trim($_POST["email"]);
     }
@@ -33,11 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate credentials
     if (empty($email_err) && empty($password_err)) {
         // Prepare a select statement
-        $sql = "SELECT id, fName, lName, email, password FROM users WHERE email = :email";
+        $sql = "SELECT id, fName, lName, role, email, password FROM users WHERE email = :email";
         
         if ($stmt = $db->prepare($sql)) {
+            // Bind the email parameter
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
+            // Execute the statement
             if ($stmt->execute()) {
                 // Check if email exists, if yes then verify password
                 if ($stmt->rowCount() == 1) {
@@ -46,20 +49,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $stored_password = $row["password"];
                     $fName = $row["fName"];
                     $lName = $row["lName"];
+                    $role = $row["role"];
 
+                    // Verify the password
                     if (password_verify($password, $stored_password)) {
                         // Password is correct, start a new session
                         session_start();
-                        
+
                         // Store session variables
                         $_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $id;
                         $_SESSION["email"] = $email;
                         $_SESSION["fName"] = $fName;
                         $_SESSION["lName"] = $lName;
-                        
+                        $_SESSION["role"] = $role;
+
+                        // Log the login activity
+                        logActivity($db, $id, 'Logged in'); // Corrected: `$id` should be passed directly
+
                         // Redirect user to dashboard
-                        header("location: index.php");
+                        header("location: dashboard.php");
                         exit;
                     } else {
                         // Password is not valid

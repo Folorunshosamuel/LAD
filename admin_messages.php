@@ -3,7 +3,7 @@
 session_start();
 include 'db_connect.php';
 
-$admin_ids = [10]; // List of user IDs with admin access, adjust as needed
+$admin_ids = [593]; // List of user IDs with admin access, adjust as needed
 
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || !in_array($_SESSION["id"], $admin_ids)) {
     header("location: signin.php");

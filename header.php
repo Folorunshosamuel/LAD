@@ -2,15 +2,49 @@
 // Start the session
 session_start();
 
-// Check if the user is logged in, if not then redirect to signin page
+// Include database connection
+include 'db_connect.php';
+include 'utils.php';
+
+// Define session timeout duration (e.g., 900 seconds = 15 minutes)
+define('SESSION_TIMEOUT', 1500); 
+
+// Check if the user is logged in
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: signin.php");
     exit;
 }
 
+// Check if last activity is set
+if (isset($_SESSION['last_activity'])) {
+    $inactiveTime = time() - $_SESSION['last_activity'];
+
+    // If user has been inactive for too long, destroy session and redirect to signin page
+    if ($inactiveTime > SESSION_TIMEOUT) {
+        session_unset(); // Clear session data
+        session_destroy(); // Destroy the session
+        header("location: signin.php?timeout=true");
+        exit;
+    }
+}
+
+// Update the last activity time
+$_SESSION['last_activity'] = time();
+
+
 // Store user's first and last name in variables for display
 $userName = htmlspecialchars($_SESSION["fName"] . " " . $_SESSION["lName"]);
 $user_id = $_SESSION["id"];
+
+// Assuming role is stored in session as 'role'
+$user_role = $_SESSION["role"];
+
+// Fetch unread messages count
+$stmt = $db->prepare("SELECT COUNT(*) FROM messages WHERE receiver_id = :user_id AND is_read = 0");
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt->execute();
+$unreadCount = $stmt->fetchColumn();
+
 ?>
 
 <head>
@@ -52,7 +86,7 @@ $user_id = $_SESSION["id"];
     <div class="az-header-menu">
       <ul class="nav">
         <li class="nav-item show">
-          <a href="index.php" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+          <a href="dashboard.php" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Home</a>
         </li>
         <li class="nav-item">
           <a href="" class="nav-link with-sub"><i class="typcn typcn-flash"></i> Chamber</a>
@@ -78,12 +112,31 @@ $user_id = $_SESSION["id"];
         <li class="nav-item">
           <a href="analyzer.php" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Bill Analyser</a>
         </li>
+        <?php if ($user_role === 'admin'): ?>
+        <li class="nav-item">
+          <a href="" class="nav-link with-sub"><i class="typcn typcn-cog-outline"></i> Admin Menu</a>
+          <nav class="az-menu-sub">
+            <a href="add_legislator.php" class="nav-link">Add Legislator</a>
+            <a href="archive_legislator.php" class="nav-link">Replace Legislator</a>
+            <a href="add_bill.php" class="nav-link">Add Bill</a>
+            <a href="add_committee.php" class="nav-link">Add Committee</a>
+            <a href="defection.php" class="nav-link">Log Defection</a>
+            <a href="admin_messages.php" class="nav-link">Message Board</a>
+          </nav>
+        </li>
+        <?php endif; ?>
       </ul>
     </div><!-- az-header-menu -->
 
     <div class="az-header-right">
       <div class="az-header-message">
-        <a href="user_inbox.php"><i class="typcn typcn-messages"></i></a>
+        <a href="user_inbox.php"><i class="typcn typcn-messages"></i>
+        <?php if ($unreadCount > 0): ?>
+            <span class="badge badge-danger position-absolute top-0 start-100 translate-middle">
+              <?= htmlspecialchars($unreadCount) ?>
+            </span>
+          <?php endif; ?>
+        </a>
       </div>
 
       <div class="dropdown az-profile-menu">
@@ -96,10 +149,9 @@ $user_id = $_SESSION["id"];
             <h6><?= $userName ?></h6>
           </div><!-- az-header-profile -->
 
-          <a href="profile.php" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
+          <a href="profile.php?id=<?= urlencode($user_id); ?>" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
           <a href="edit-profile.php" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
           <a href="activity-logs.php" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
-          <a href="account-settings.php" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
           <a href="logout.php" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
         </div><!-- dropdown-menu -->
       </div><!-- az-profile-menu -->
