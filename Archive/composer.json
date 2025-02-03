@@ -1,0 +1,5 @@
+{
+    "require": {
+        "pdfparser/pdfparser": "^1.0"
+    }
+}

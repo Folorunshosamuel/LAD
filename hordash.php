@@ -41,6 +41,7 @@ $members = $db->query("SELECT id, name, gender, dob, state, constituency, positi
 <body>
     <?php
     include 'header.php'; // Include the header at the beginning of the dashboard
+    include('horboilerplate.php');
     ?>
     <div class="container-fluid">
         <!-- Vector Map for State Analysis -->

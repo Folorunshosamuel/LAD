@@ -130,7 +130,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Aleo", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -139,7 +139,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: sans-serif;
+  font-family: "Aleo", Sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
@@ -151,8 +151,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 0.875rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Aleo", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #031b4e;
@@ -250,7 +250,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Aleo", "Liberation Mono", "Courier New", monospace;
   font-size: 1em; }
 
 pre {
@@ -7435,10 +7435,10 @@ a.text-dark:hover, a.text-dark:focus {
     color: #fff; }
 
 .btn-outline-indigo {
-  border-color: #5b47fb;
-  color: #5b47fb; }
+  border-color: #f4f5f8;
+  color: #f4f5f8; }
   .btn-outline-indigo:hover, .btn-outline-indigo:focus {
-    background-color: #5b47fb; }
+    background-color: #dc3545; }
 
 .btn-outline-light {
   border-color: #97a3b9;
@@ -8876,31 +8876,92 @@ a.text-dark:hover, a.text-dark:focus {
       display: block;
       padding: 0; } }
 
-.az-content-header {
-  background: url('reps.png');
-  background-repeat: no-repeat;
-  background-size:cover;
-  height:90%;
-  background-position: bottom;
-  padding: 30px 80px;
+.az-content-slide {
+  background: #5b47fb url('coverimg.png') no-repeat right;
+  background-size: contain;
+  height: auto; /* Allow height to adjust automatically */
+  min-height: 300px; /* Optional: Set a minimum height */
+  padding: 20px 40px; /* Reduce padding for smaller screens */
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px; }
-  /* @media (min-width: 992px) {
-    .az-content-header {
-       display:flex} } */
+  margin-bottom: 20px;
+}
+
+/* Media query to hide the image on smaller screens */
+@media (max-width: 768px) {
+  .az-content-slide {
+    background-image: none; /* Remove the background image */
+    background-color: #5b47fb; /* Retain the solid background color */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+}
+.az-content-header {
+background: #5b47fb url('dashboard_banner.png') no-repeat center;
+background-size: cover;
+height: auto;
+padding: 20px 80px;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 20px; }
+
+/* Media query to hide the image on smaller screens */
+@media (max-width: 768px) {
+  .az-content-header {
+    background-image: center; /* Remove the background image */
+    background-color: #5b47fb; /* Retain the solid background color */
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+}
+
+.az-content-hor {
+  background: #5b47fb url('hor-banner.png') no-repeat center;
+  background-size: cover;
+  height: auto;
+  padding: 50px 70px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px; }
+  
+  /* Media query to hide the image on smaller screens */
+  @media (max-width: 768px) {
+    .az-content-hor {
+      background-image: center; /* Remove the background image */
+      background-color: #5b47fb; /* Retain the solid background color */
+      padding: 20px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  .az-content-senate {
+    background: #5b47fb url('senate-banner.png') no-repeat center;
+    background-size: cover;
+    height: auto;
+    padding: 50px 70px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px; }
+    
+    /* Media query to hide the image on smaller screens */
+    @media (max-width: 768px) {
+      .az-content-senate {
+        background-image: center; /* Remove the background image */
+        background-color: #5b47fb; /* Retain the solid background color */
+        padding: 20px; /* Adjust padding for smaller screens */
+      }
+    }
+
   .az-content-header .az-logo {
     width: 80%;
     height: auto;
     flex: 1;
     text-align: center; }
 
-.az-content-header-top {
+.az-content-header-topp {
   display: flex;
   align-items: left;
   justify-content: space-between;
   margin-bottom: 20px;
-  flex-direction: column-reverse;}
+  flex-direction: column;}
+  
 .az-content-body {
   flex: 1; }
 
@@ -9126,10 +9187,10 @@ body {
 .az-header-title {
   font-weight: 700;
   font-size: 28px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Aleo', sans-serif;
   text-transform:capitalize;
   color: #fff;
-  letter-spacing: -1px;
+  letter-spacing: 1px;
   display: flex;
   align-items: left;
   position: relative;
@@ -9253,7 +9314,7 @@ body {
     position: relative;
     color: #031b4e;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 700;
     padding: 0;
     transition: all 0.2s ease-in-out; }
     @media (prefers-reduced-motion: reduce) {
@@ -11717,7 +11778,9 @@ body {
 
       
 .az-column-landing {
-    padding: 10px;
+    margin-top: 20px;
+    margin-left: 120px;
+    padding: 40px;
     color: #fff;
     display: flex;
     align-items: center;

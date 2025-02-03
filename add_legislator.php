@@ -71,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
 </head>
 <body>
+<?php
+    include 'header.php'; // Include the header at the beginning of the dashboard
+    ?>
 <div class="container">
     <h2>Add Legislator</h2>
 

@@ -1,6 +1,5 @@
 <?php
-// In your admin-only pages
-session_start();
+include 'header.php'; // Include the header at the beginning of the dashboard
 include 'db_connect.php';
 
 $admin_ids = [593]; // List of user IDs with admin access, adjust as needed
@@ -30,7 +29,6 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Admin Message Dashboard</title>
 </head>
 <body>
-
 <h2>Admin - All Messages</h2>
 <table class="table">
     <thead>

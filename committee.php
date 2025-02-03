@@ -13,7 +13,7 @@ $committees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Committees</title>
+    <title>Committees of the National Assembly</title>
     <link rel="stylesheet" href="lad.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 </head>
@@ -27,7 +27,6 @@ $committees = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <thead>
             <tr>
                 <th>Committee Name</th>
-                <th>Function</th>
                 <th>Chamber</th>
                 <!-- <th>Created At</th> -->
                 <th>Actions</th>
@@ -37,7 +36,7 @@ $committees = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($committees as $committee): ?>
                 <tr>
                     <td><?= htmlspecialchars($committee['name']); ?></td>
-                    <td><?= htmlspecialchars($committee['committee_function']); ?></td>
+                    <!-- <td><?= htmlspecialchars($committee['committee_function']); ?></td> -->
                     <td><?= htmlspecialchars($committee['chamber']); ?></td>
                     <!-- <td><?= htmlspecialchars(date('d-M-Y', strtotime($committee['created_at']))); ?></td> -->
                     <td>

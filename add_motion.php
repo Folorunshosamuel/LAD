@@ -1,6 +1,7 @@
 <?php
 // Include database connection
 include 'db_connect.php';
+include 'header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $title = $_POST['title'];

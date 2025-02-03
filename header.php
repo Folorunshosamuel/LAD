@@ -75,10 +75,10 @@ $unreadCount = $stmt->fetchColumn();
 <div class="az-header">
   <div class="container">
     <div class="az-header-left">
-      <!-- <a href="index.php" class="az-logo"><span></span> LAD</a> -->
+      <a href="index.php" class="az-logo"><span></span>Legis360</a>
       <a href="index.php" class="az-logo">
     <span></span>
-    <img src="uploads/lad_logo.png" alt="LAD Logo">
+    <!-- <img src="uploads/lad_logo.png" alt="LAD Logo"> -->
 </a>
       <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
     </div><!-- az-header-left -->

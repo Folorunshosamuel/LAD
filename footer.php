@@ -2,7 +2,7 @@
         <footer class="lead-footer shadow px-5 py-3">
             <div class="row">
                 <div class="col-lg-5 col-md-6">
-                    <div class="footer-brand-wrapper tx-22 font-weight-bold">LAD</div>
+                    <div class="footer-brand-wrapper tx-22 font-weight-bold">Legis360</div>
                     <p class="pb-2 mb-4">Empowering Legislative Transparency</p>
                 </div>
                 <div class="col-lg-5 ml-md-auto">
@@ -41,7 +41,7 @@
                         <a href="#!"><i class="typcn icon typcn-social-linkedin tx-20 text-dark"></i></a>
                         <a href="#!"><i class="typcn icon typcn-social-instagram tx-20 text-dark"></i></a>
                     </nav>
-                    <p class="footer-text text-gray order-sm-first">©2024 LAD. All rights reserved.</p>
+                    <p class="footer-text text-gray order-sm-first">©2024 Legis360. All rights reserved.</p>
                 </div>
             </div>
         </footer>

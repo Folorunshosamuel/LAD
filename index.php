@@ -17,11 +17,15 @@
     </style>
 </head>
 <body>
+    <?php
+    include 'header_index.php';
+    ?>
     <main>
-    <div class="az-content-header">
+    <div class="az-content-slide">
         <div class="az-column-landing">
             <div>
-                <h1 class="az-header-title" style="font-size: 3rem">Legislative Analysis Dashboard</h1>
+                <h1 class="az-header-title" style="font-size: 3rem">Empowering Citizens to Shape Their Legislative Future</h1>
+                <h5>Connecting you to the voices that shape our democracy, empowering every citizen to engage and inspire change.</h5>
                 <a href="#" class="btn btn-outline-indigo">Learn More</a>
             </div>
         </div>
@@ -30,27 +34,27 @@
             <section class="py-5 mb-5">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="feature-icon feature-icon-lg rounded border text-primary mb-40px">
-                            <i class="typcn icon typcn-coffee tx-26"></i>
+                        <div>
+                            <img class="card-img-top" src="images.jpg" alt="Card image cap">
                         </div>
-                        <h5 class="font-weight-bold">For Citizens</h5>
-                        <p class="text-muted mb-20px">Stay informed with real-time updates on legislative activities. Access bills, motions, and petitions with just a click.</p>
+                        <h3 class="font-weight-bold">For Citizens</h3>
+                        <p class="mb-40px">Stay informed with real-time updates on legislative activities. Access bills, motions, and petitions with just a click.</p>
                         <a href="#!" class="text-dark font-weight-bold">Learn more</a>
                     </div>
                     <div class="col-md-4">
-                        <div class="feature-icon feature-icon-lg rounded border text-primary mb-40px">
-                            <i class="typcn icon typcn-briefcase tx-26"></i>
+                        <div>
+                            <img class="card-img-top" src="Senate-1.jpg" alt="Card image cap">
                         </div>
-                        <h5 class="font-weight-bold">For Legislators</h5>
-                        <p class="text-muted mb-20px">Your work made accessible. Showcase your activities, respond to messages, and connect with your constituents seamlessly.</p>
+                        <h3 class="font-weight-bold">For Legislators</h3>
+                        <p class="mb-40px">Your work made accessible. Showcase your activities, respond to messages, and connect with your constituents seamlessly.</p>
                         <a href="#!" class="text-dark font-weight-bold">Learn more</a>
                     </div>
                     <div class="col-md-4">
-                        <div class="feature-icon feature-icon-lg rounded border text-primary mb-40px">
-                            <i class="typcn icon typcn-folder-add tx-26"></i>
+                        <div>
+                            <img class="card-img-top" src="images.jpg" alt="Card image cap">
                         </div>
-                        <h5 class="font-weight-bold">Data Insights</h5>
-                        <p class="text-muted mb-20px">Analyze legislative data for smarter decisions. Visualize trends, gender representation, and party distribution at a glance.</p>
+                        <h3 class="font-weight-bold">For Institutions</h3>
+                        <p class="mb-40px">Analyze legislative data for smarter decisions. Visualize trends, gender representation, and party distribution at a glance.</p>
                         <a href="#!" class="text-dark font-weight-bold">Learn more</a>
                     </div>
                 </div>
@@ -186,7 +190,7 @@
                     <div class="col-sm-3 mb-20px px-3">
                         <div class="card h-100 d-flex align-items-center justify-content-center p-3 rounded-0">
                             <div class="card-body">
-                                <img src="uploads/yiaga.png" alt="client" class="img-fluid">
+                                <img src="uploads/.png" alt="client" class="img-fluid">
                             </div>
                         </div>
                     </div>

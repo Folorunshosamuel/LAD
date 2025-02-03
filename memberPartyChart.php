@@ -3,7 +3,7 @@
 include 'db_connect.php';
 
 // Query to get the count of members by political party
-$query = $db->query("SELECT party, COUNT(id) AS count FROM legislators where chamber='House of reps' GROUP BY party");
+$query = $db->query("SELECT party, COUNT(id) AS count FROM legislators where chamber='House of reps' AND is_archived = FALSE GROUP BY party");
 $partyCounts = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>

@@ -13,27 +13,13 @@ $dayOfWeek2 = date('l', strtotime('+7 days')); // Day of the week for a week ahe
 <html lang="en">
 <body>
 <div class="az-content-header">
-    <div class="az-content-header-top">
+    <div class="az-content-header-topp">
       <div>
-        <h5 class="az-content-title mg-b-5 mg-b-lg-8">Hi, welcome <?= $userName ?>!</h5>
-        <p class="mg-b-0" style="color: #fff">Nigeria National Assembly - 10th Assembly</p>
+        <h5 class="az-content-title mg-b-5 mg-b-lg-8">Hi, <?= $userName ?>!</h5>
+        <p class="mg-b-0" style="color: #fff;">Nigeria National Assembly - 10th Assembly</p>
+        <p class="mg-b-0" style="color: #fff;"><?= $dayOfWeek1 ?>, <?= $day1 ?> <?= $monthYear ?></p>
       </div>
-      <div class="az-dashboard-date">
-        <div class="date">
-          <div style="color: #fff"><?= $day1 ?></div>
-          <div>
-            <span style="color: #fff"><?= $monthYear ?></span>
-            <span style="color: #fff"><?= $dayOfWeek1 ?></span>
-          </div>
-        </div>
-      </div><!-- az-dashboard-date -->
     </div><!-- az-content-header-top -->
-    <div class="az-column-landing">
-        <div>
-            <h1 class="az-header-title" style="font-size: 3rem">Legislative Analysis Dashboard</h1>
-            <a href="#" class="btn btn-outline-indigo">Learn More</a>
-        </div>
-    </div><!-- az-column-signup-left -->
 </div><!-- az-content-header -->
 </body>
 </html>
