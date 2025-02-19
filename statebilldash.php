@@ -3,10 +3,10 @@
 include 'db_connect.php';
 
 // Retrieve dashboard statistics
-$totalBillsQuery = $db->query("SELECT COUNT(*) as total FROM bills");
+$totalBillsQuery = $db->query("SELECT COUNT(*) as total FROM state_bills");
 $totalBills = $totalBillsQuery->fetch()['total'];
 
-$billsByStatusQuery = $db->query("SELECT billStatus, COUNT(*) as count FROM bills GROUP BY billStatus");
+$billsByStatusQuery = $db->query("SELECT billStatus, COUNT(*) as count FROM state_bills GROUP BY billStatus");
 $billsByStatusResult = $billsByStatusQuery->fetchAll(PDO::FETCH_ASSOC);
 
 $billsByStatus = [];
@@ -14,14 +14,14 @@ foreach ($billsByStatusResult as $row) {
     $billsByStatus[$row['billStatus']] = $row['count'];
 }
 
-$recentBillsQuery = $db->query("SELECT id, billNum, title, chamber, billStatus, firstReading FROM bills ORDER BY firstReading DESC LIMIT 10");
+$recentBillsQuery = $db->query("SELECT id, billNum, title, billStatus, firstReading FROM state_bills ORDER BY firstReading DESC LIMIT 10");
 $recentBills = $recentBillsQuery->fetchAll();
 
-$sponsorSummaryQuery = $db->query("SELECT sponsor_id, COUNT(*) as count, (SELECT name FROM legislators WHERE id = sponsor_id) as sponsor_name FROM bills GROUP BY sponsor_id LIMIT 5");
+$sponsorSummaryQuery = $db->query("SELECT sponsor_id, COUNT(*) as count, (SELECT name FROM state_assembly_members WHERE id = sponsor_id) as sponsor_name FROM state_bills GROUP BY sponsor_id LIMIT 5");
 $sponsorSummary = $sponsorSummaryQuery->fetchAll();
 
-$allBillsQuery = $db->query("SELECT bills.id, bills.billNum, bills.title, bills.billStatus, bills.firstReading, legislators.name AS sponsor_name
-                             FROM bills LEFT JOIN legislators ON Bills.sponsor_id = legislators.id"); // This covers for both chambers as we are calling the legislators table directly
+$allBillsQuery = $db->query("SELECT state_bills.id, state_bills.billNum, state_bills.title, state_bills.billStatus, state_bills.firstReading, state_assembly_members.name AS sponsor_name
+                             FROM state_bills LEFT JOIN state_assembly_members ON state_bills.sponsor_id = state_assembly_members.id"); // This covers for both chambers as we are calling the legislators table directly
 $allBills = $allBillsQuery->fetchAll();
 ?>
 
@@ -51,7 +51,7 @@ $allBills = $allBillsQuery->fetchAll();
     ?>
     <div class="container-fluid px-2">
         <div class="az-content-label mg-b-5">
-            <h2>Senate Bills Overview</h2>
+            <h2>State House Assemblies Bills Overview</h2>
         </div>
 
         <!-- Summary Cards -->
@@ -220,19 +220,6 @@ $allBills = $allBillsQuery->fetchAll();
                 </div>
             </div>
         </div>
-
-
-        <!-- Bill Progression chart -->
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">Bill Progression chart</div>
-            <div class="card-body p-0">
-            <?php
-                // Include database connection
-                include 'bill-progression.php';
-                ?>
-            </div>
-        </div>
-
         <!-- Sponsor Summary Table -->
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">Top Sponsors</div>

@@ -130,7 +130,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Aleo", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Manrope", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -139,7 +139,7 @@
   box-sizing: border-box; }
 
 html {
-  font-family: "Aleo", Sans-serif;
+  font-family: "Manrope", Sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
@@ -151,7 +151,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Aleo", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Manrope", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -250,7 +250,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Aleo", "Liberation Mono", "Courier New", monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Manrope", "Liberation Mono", "Courier New", monospace;
   font-size: 1em; }
 
 pre {
@@ -3400,7 +3400,11 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 3px; }
+  border-radius: 3px;
+  margin: 0.2rem;
+ }
+
+  
   .card > hr {
     margin-right: 0;
     margin-left: 0; }
@@ -4282,7 +4286,7 @@ a.close.disabled {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
@@ -5749,7 +5753,8 @@ button.bg-dark:focus {
 
 .mb-4,
 .my-4 {
-  margin-bottom: 1.5rem !important; }
+  margin-bottom: 1.5rem !important;
+  margin-top: 1.5rem !important; }
 
 .ml-4,
 .mx-4 {
@@ -9187,7 +9192,7 @@ body {
 .az-header-title {
   font-weight: 700;
   font-size: 28px;
-  font-family: 'Aleo', sans-serif;
+  font-family: 'Manrope', sans-serif;
   text-transform:capitalize;
   color: #fff;
   letter-spacing: 1px;

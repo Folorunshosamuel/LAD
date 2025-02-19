@@ -3,7 +3,7 @@
 include 'db_connect.php';
 
 // Fetch bill progression data
-$query = $db->query("SELECT title, firstReading, secondReading, thirdReading FROM Bills");
+$query = $db->query("SELECT title, firstReading, secondReading, thirdReading FROM bills");
 $bills = $query->fetchAll(PDO::FETCH_ASSOC);
 
 // Prepare data arrays

@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legislative Analysis dashboard - Welcome</title>
-    <link rel="stylesheet" href="lad.css"> <!-- Adjust path to your CSS file -->
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@legis360">
+    <meta name="twitter:creator" content="@legis30">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Legis360">
+    <meta name="twitter:description" content="Legis360 Providing a 360-degree view of parliamentary activities">
+    <meta name="twitter:image" content="https://www.legis360.org/">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="https://www.legis360.org">
+    <meta property="og:title" content="Legis360">
+    <meta property="og:description" content="Legis360 Providing a 360-degree view of parliamentary activities">
+
+    <meta property="og:image" content="#">
+    <meta property="og:image:secure_url" content="#">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="Legis360" content="Legis360 Providing a 360-degree view of parliamentary activities">
+    <meta name="author" content="Tenstepscreative">
+    <title>Connecting you to the voices that shape our democracy</title>
+    <link rel="stylesheet" href="lad.css"> 
     <style>
          .card-summary { display: flex; align-items: normal; justify-content: space-between; }
         .icon-container {
@@ -26,7 +48,7 @@
             <div>
                 <h1 class="az-header-title" style="font-size: 3rem">Empowering Citizens to Shape Their Legislative Future</h1>
                 <h5>Connecting you to the voices that shape our democracy, empowering every citizen to engage and inspire change.</h5>
-                <a href="#" class="btn btn-outline-indigo">Learn More</a>
+                <a href="signup.php" class="btn btn-outline-indigo">Get Started</a>
             </div>
         </div>
     </div><!-- az-content-header -->    
@@ -71,10 +93,7 @@
                         Empowering Legislative <br> Transparency.
                         </h2>
                         <p class="text-muted mb-20px">Engage directly with lawmakers. Share your thoughts, submit petitions, and stay involved in the legislative process.</p>
-                        <ul class="list-ckeck-soft mb-30px">
-                            <li>Perfect for modern startups</li>
-                            <li>Ready to be customized</li>
-                        </ul>
+                        
                         <button class="btn btn-primary">Learn more</button>
                     </div>
                 </div>

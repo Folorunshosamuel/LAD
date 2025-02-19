@@ -2,6 +2,9 @@
 // Include database connection
 include 'db_connect.php';
 
+// Initialize an empty message variable
+$successMessage = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $billNum = $_POST['billNum'];
         $title = $_POST['title'];
@@ -23,10 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert the new bill into the database
-    $insertQuery = $db->prepare("INSERT INTO Bills (billNum, title, chamber, sponsor_id, billStatus, firstReading, secondReading, thirdReading, committeeReferred, consolidatedWith, billAnalysis, billFile) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $insertQuery = $db->prepare("INSERT INTO bills (billNum, title, chamber, sponsor_id, billStatus, firstReading, secondReading, thirdReading, committeeReferred, consolidatedWith, billAnalysis, billFile) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $insertQuery->execute([$billNum, $title, $chamber, $sponsor_id, $billStatus, $firstReading, $secondReading, $thirdReading, $committeeReferred, $consolidatedWith, $billAnalysis, $billFile]);
 
-    echo "<p class='success-message'>Bill added successfully!</p>";
+    // Set the success message to display in the HTML
+    $successMessage = "Bill added successfully!";
 }
 
 // Fetch sponsors for the dropdown
@@ -110,7 +114,14 @@ $committees = $committeesQuery->fetchAll();
     <?php
     include 'header.php'; // Include the header at the beginning of the dashboard
     ?>
+    <!-- Display success message if available -->
+    <?php if ($successMessage): ?>
+              <div class="alert alert-success">
+                  <?= htmlspecialchars($successMessage) ?>
+              </div>
+        <?php endif; ?>
     <div class="add-bill-container">
+        
         <h2>Add New Bill</h2>
 
         <form action="" method="post" enctype="multipart/form-data">
@@ -151,9 +162,12 @@ $committees = $committeesQuery->fetchAll();
                 </select>
             </div>
             <div class="form-group">
-                <label for="members">Select Members:</label>
-                <select id="members" name="members[]" class="form-control select2" multiple="multiple" required>
+                <label for="members">Select Sponsor:</label>
+                <select id="members" name="sponsor_id" class="form-control select2" multiple="multiple" required>
                     <!-- Members will be dynamically populated here -->
+                    <?php foreach ($sponsors as $sponsor): ?>
+                        <option value="<?= htmlspecialchars($sponsor['id']) ?>"><?= htmlspecialchars($sponsor['name']) ?></option>
+                    <?php endforeach; ?>
                 </select>
                 <small>Select bill sponsor.</small>
             </div>
@@ -161,7 +175,7 @@ $committees = $committeesQuery->fetchAll();
             <div class="form-group">
                 <label for="billStatus">Status</label>
                 <select name="billStatus" id="billStatus" required>
-                    <option value="In Progress">In Progress</option>
+                    <option value="Inprogress">In Progress</option>
                     <option value="Rejected">Rejected</option>
                     <option value="Rejected">Withdrawn</option>
                     <option value="Passed">Passed</option>

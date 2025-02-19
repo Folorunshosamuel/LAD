@@ -56,14 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="az-logo">
                 <img src="uploads/lad_logo.svg" alt="logo">
             </div>
-            <h5>Legislative Analysis Dashboard</h5>
-            <p>Legislative Analysis Dashboard by Yiaga Africa's  Centre for Legislative Engagement is Nigeria’s foremost independent parliamentary monitoring tool and policy think tank that bridges the gap between people and parliament.</p>
+            <h5>Legis360</h5>
+            <p>Legis360 is Nigeria’s foremost independent parliamentary monitoring tool and policy think tank that bridges the gap between people and parliament.</p>
             <a href="#" class="btn btn-outline-indigo">Learn More</a>
         </div>
     </div><!-- az-column-signup-left -->
 
     <div class="az-column-signup">
-        <h1 class="az-logo">L<span>A</span>D</h1>
+        <h1 class="az-logo">Legis360</h1>
         <div class="az-signup-header">
             <h2>Get Started</h2>
             <h4>It's free to signup and only takes a minute.</h4>

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Update the bill information in the database
-    $updateQuery = $db->prepare("UPDATE Bills SET billNum = ?, title = ?, billStatus = ?, firstReading = ?, secondReading = ?, thirdReading = ?, committeeReferred = ?, consolidatedWith = ?, billAnalysis = ?, billFile = ? WHERE id = ?");
+    $updateQuery = $db->prepare("UPDATE bills SET billNum = ?, title = ?, billStatus = ?, firstReading = ?, secondReading = ?, thirdReading = ?, committeeReferred = ?, consolidatedWith = ?, billAnalysis = ?, billFile = ? WHERE id = ?");
     $updateQuery->execute([$billNum, $title, $billStatus, $firstReading, $secondReading, $thirdReading, $committeeReferred, $consolidatedWith, $billAnalysis, $billFile, $billId]);
 
     // Set the success message to display in the HTML
@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="billStatus">Status</label>
                 <select name="billStatus" id="billStatus">
                     <option value="Assented" <?= $bill['billStatus'] == 'Assented' ? 'selected' : '' ?>>Assented</option>
-                    <option value="Pending" <?= $bill['billStatus'] == 'Pending' ? 'selected' : '' ?>>Pending</option>
+                    <option value="Inprogress" <?= $bill['billStatus'] == 'Inprogress' ? 'selected' : '' ?>>In Progress</option>
                     <option value="Passed" <?= $bill['billStatus'] == 'Passed' ? 'selected' : '' ?>>Passed</option>
                     <option value="Rejected" <?= $bill['billStatus'] == 'Rejected' ? 'selected' : '' ?>>Rejected</option>
                     <option value="Vetoed" <?= $bill['billStatus'] == 'Vetoed' ? 'selected' : '' ?>>Vetoed</option>

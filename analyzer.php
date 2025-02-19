@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
 
-    $apiKey = 'sk-CF6Ei4lR1obhzDVoJypGte6IR1puM0Y_WTRcpe0t8LT3BlbkFJt3Q14nqtB9ibHj1aYX_eJMpEF4gYHRjKir25jBEwAA';
+    $apiKey = '';
     $billContent = $_POST['billContent'] ?? '';
     $selectedPrompt = $_POST['prompt'] ?? 'Summarize the key provisions of the bill in this section';
 
@@ -112,7 +112,7 @@ Do a comparative analysis of the bill if such exist in other countries?">Perform
         </div>
         <div class="analysis-result" id="analysisResult" style="display: none;">
             <h3 class="text-center">Analysis Result</h3>
-            <h5>Analysed by Yiaga Africa's BillAnalyzerAI</h5>
+            <h5>Analysed by Legis360's BillAnalyzerAI</h5>
             <div id="analysisContent"></div>
 
         </div>

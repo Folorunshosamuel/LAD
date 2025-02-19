@@ -32,3 +32,38 @@ exit;
 ?>
 
 https://www.nilds.gov.ng/wp-content/uploads/2023/09/Committee-Manual.pdf
+
+
+<!-- Recent Bills List with Images -->
+<div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Recent Bills</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group">
+                    <?php if (!empty($recentBills)) : ?>
+                        <?php foreach ($recentBills as $bill) : ?>
+                            <a href="bill.php?id=<?= urlencode($bill['id']) ?>" class="list-group-item list-group-item-action d-flex align-items-center">
+                                <?php 
+                                    // Conditional logic to choose the chamber image
+                                    $imagePath = $bill['chamber'] === 'Senate' 
+                                        ? 'uploads/SenateLogoImage.png' 
+                                        : 'uploads/HORLogoImage.png'; 
+                                ?>
+                                <img src="<?= $imagePath ?>" alt="<?= $bill['chamber'] ?>" class="me-3" style="width: 40px; height: 40px;">
+                                
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><?= htmlspecialchars($bill['billNum']) ?>: <?= htmlspecialchars($bill['title']) ?></div>
+                                    <small>Status: <?= htmlspecialchars($bill['billStatus']) ?> | First Reading: <?= htmlspecialchars($bill['firstReading'] ?: 'N/A') ?></small>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary">View Bill</button>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <div class="list-group-item text-center text-muted">
+                            No recent bills available.
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
