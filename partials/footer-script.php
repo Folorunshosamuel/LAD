@@ -1,0 +1,23 @@
+<script src="assets/js/vendors.min.js"></script>
+
+<script src="assets/js/components/sticky-navbar.js"></script>
+<script src="assets/js/components/smooth-scroll.js"></script>
+<script src="assets/js/components/scroll-top-button.js"></script>
+<script src="assets/js/components/password-visibility-toggle.js"></script>
+<script src="assets/js/components/element-parallax.js"></script>
+<script src="assets/js/components/parallax.js"></script>
+<script src="assets/js/components/carousel.js"></script>
+<script src="assets/js/components/gallery.js"></script>
+<script src="assets/js/components/range-slider.js"></script>
+<script src="assets/js/components/form-validation.js"></script>
+<script src="assets/js/components/input-formatter.js"></script>
+<script src="assets/js/components/tooltip.js"></script>
+<script src="assets/js/components/popover.js"></script>
+<script src="assets/js/components/toast.js"></script>
+<script src="assets/js/components/video-button.js"></script>
+<script src="assets/js/components/price-switch.js"></script>
+<script src="assets/js/components/masonry-grid.js"></script>
+<script src="assets/js/components/subscription-form.js"></script>
+<script src="assets/js/components/hover-animation.js"></script>
+<script src="assets/js/components/audio-player.js"></script>
+<script src="assets/js/components/sidebar.js"></script>

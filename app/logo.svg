@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 233.25 320.59">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Montserrat-Bold, Montserrat;
+        font-size: 49.79px;
+      }
+
+      .cls-1, .cls-2 {
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: #03c;
+      }
+
+      .cls-2 {
+        font-family: Inter-Bold, Inter;
+        font-size: 10.23px;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-9 {
+        letter-spacing: 0em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-11 {
+        letter-spacing: .02em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path class="cls-3" d="M116.62,0c-24.77,0-47.72,7.72-66.61,20.88h-16.15c-7.31,0-13.26,5.95-13.26,13.31v16.22C7.61,69.22,0,92.03,0,116.62c0,64.41,52.22,116.62,116.62,116.62,25.45,0,48.99-8.15,68.16-21.98h18.62c4.2,0,7.53-3.38,7.53-7.53v-18.5c14.03-19.26,22.31-42.97,22.31-68.61C233.25,52.22,181.03,0,116.62,0ZM105.32,189.21c0,2.15-1.75,3.9-3.91,3.9h-24.5c-19.36,0-35.04-15.68-35.04-35.04V47c0-3.79,3.07-6.86,6.86-6.86h24.51c17.71,0,32.08,14.36,32.08,32.08v116.99ZM191.38,173.57c0,10.79-8.75,19.54-19.54,19.54h-49.44c-1.2,0-2.17-.97-2.17-2.17v-29.93c0-9.88,8-17.89,17.89-17.89h49.44c2.12,0,3.83,1.72,3.83,3.83v26.63Z"/>
+    <g>
+      <text class="cls-1" transform="translate(.59 296.54)"><tspan class="cls-9" x="0" y="0">L</tspan><tspan class="cls-5" x="29.87" y="0">egi</tspan><tspan class="cls-10" x="111.13" y="0">s</tspan><tspan x="137.08" y="0">360</tspan></text>
+      <text class="cls-2" transform="translate(99.42 307.14)"><tspan x="0" y="0">G</tspan><tspan class="cls-6" x="7.78" y="0">ov</tspan><tspan class="cls-4" x="19.68" y="0">ernance </tspan><tspan class="cls-8" x="63.11" y="0">f</tspan><tspan x="66.86" y="0">or </tspan><tspan class="cls-7" x="79.69" y="0">e</tspan><tspan class="cls-6" x="85.65" y="0">v</tspan><tspan x="91.46" y="0">e</tspan><tspan class="cls-11" x="97.57" y="0">r</tspan><tspan class="cls-6" x="101.92" y="0">y</tspan><tspan x="107.73" y="0">one</tspan></text>
+    </g>
+  </g>
+</svg>
