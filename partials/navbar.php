@@ -77,7 +77,7 @@
                 </ul>
             </div>
             <div class="offcanvas-header border-top">
-                <a href="signin.php" class="btn btn-primary w-100" target="_blank" rel="noopener">
+                <a href="app/signin.php" class="btn btn-primary w-100" target="_blank" rel="noopener">
                     <i class="bx bx-lock fs-4 lh-1 me-1"></i>
                     &nbsp;Login
                 </a>
@@ -91,7 +91,7 @@
         <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a href="signin.php" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" target="_blank" rel="noopener">
+        <a href="app/signin.php" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex" target="_blank" rel="noopener">
             <i class="bx bx-lock fs-5 lh-1 me-1"></i>
             &nbsp;Login
         </a>
